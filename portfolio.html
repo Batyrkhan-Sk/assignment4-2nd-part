@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: solid pink;
+        }
+
+        .hobbies-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hobby-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #magicButton {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #magicButton:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2">
+                <li class="nav-item"><a class="nav-link" href="index1.html">New webpage</a></li>
+                <li class="nav-item"><a class="nav-link" href="index2.html">To-Do List</a></li>
+                <li class="nav-item"><a class="nav-link" href="index3.html">Calculator</a></li>
+                <li class="nav-item"><a class="nav-link" href="index4.html">Sorting tool</a></li>
+                <li class="nav-item"><a class="nav-link" href="index5.html">Tax calculator</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<header class="text-center p-4">
+    <div class="flex-container">
+        <img src="assets/image.jpg" alt="Here should be my photo" width="200">
+        <h1>Shekish Batyrkhan</h1>
+        <p><em>Student of Astana IT University, SE-2310</em></p>
+        <p>Hi there! My name is Batyrkhan and this is my web portfolio. You can learn more about my hobbies or contact me below.</p>
+    </div>
+    <hr class="w-50 mx-auto">
+</header>
+
+<!-- Hobbies Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Hobbies</h2>
+    <div class="hobbies-container">
+        <div class="hobby-card">
+            <h3>Football ⚽</h3>
+            <p>I love playing football. It's a great way to stay fit and have fun with friends.</p>
+        </div>
+        <div class="hobby-card">
+            <h3>Running 🏃‍♂️</h3>
+            <p>Running helps me clear my mind and stay active.</p>
+        </div>
+        <div class="hobby-card">
+            <h3>Books 📚</h3>
+            <p>Books offer a wonderful chance to learn something new.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Contact Me</h2>
+    <div class="contact-container">
+        <div class="contact-info mb-3">
+            <h3>Contact Information</h3>
+            <p><strong>Tel:</strong> +77758484535</p>
+            <p><strong>Email:</strong> <a href="mailto:bshekish@gmail.com">bshekish@gmail.com</a></p>
+        </div>
+        <form action="mailto:bshekish@gmail.com" method="post" enctype="text/plain">
+            <div class="contact-form">
+                <input type="text" placeholder="Your name..." required>
+                <input type="email" placeholder="Your email..." required>
+                <textarea placeholder="Type your message here..." rows="4" required></textarea>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Magic Button -->
+<button id="magicButton" class="btn btn-primary">Click Me</button>
+
+<!-- JavaScript -->
+<script>
+    const button = document.getElementById('magicButton');
+    let colorToggle = false;
+
+    button.addEventListener('click', () => {
+        document.body.style.backgroundColor = colorToggle ? '#f8f9fa' : '#ffefd5';
+        colorToggle = !colorToggle;
+        button.textContent = button.textContent === 'Click Me' ? 'Magic Happened!' : 'Click Me';
+        button.style.backgroundColor = button.style.backgroundColor === 'green' ? 'blue' : 'green';
+    });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

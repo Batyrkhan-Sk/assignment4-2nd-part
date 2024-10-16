@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3; 
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tax Calculator</h1>
+        <input type="text" id="carPrice" placeholder="Car Price">
+        <button id="calculateTaxBtn"><i class="fas fa-calculator"></i> Calculate Tax</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("calculateTaxBtn").addEventListener("click", function() {
+            const price = parseFloat(document.getElementById("carPrice").value);
+            let taxRate = 0;
+
+            if (isNaN(price) || price < 0) {
+                alert("Please enter a valid car price!");
+                return;
+            }
+
+            if (price > 10000) {
+                taxRate = 0.25;
+            } else if (price >= 5000) {
+                taxRate = 0.20;
+            } else {
+                taxRate = 0.15;
+            }
+
+            const taxAmount = price * taxRate;
+            const totalAmount = price + taxAmount;
+
+            document.getElementById("result").innerHTML = `
+                <strong>Tax Breakdown:</strong><br>
+                Price: $${price.toFixed(2)}<br>
+                Tax Rate: ${taxRate * 100}%<br>
+                Tax Amount: $${taxAmount.toFixed(2)}<br>
+                Total Amount: $${totalAmount.toFixed(2)}
+            `;
+        });
+    </script>
+</body>
+</html>

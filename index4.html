@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Sorting Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            margin: 10px 0;
+            display: block;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3; 
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        #result {
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Number Sorting Tool</h2>
+        <label for="numbers">Enter numbers separated by commas:</label>
+        <input type="text" id="numbers" required>
+        
+        <label for="order">Select order:</label>
+        <select id="order">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        
+        <button onclick="sortNumbers()">Sort</button>
+        
+        <h3>Sorted Result:</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function sortNumbers() {
+            const numberInput = document.getElementById('numbers').value;
+            const order = document.getElementById('order').value;
+            const resultElement = document.getElementById('result');
+
+            const numberArray = numberInput.split(',');
+            const validNumbers = [];
+
+            for (let i = 0; i < numberArray.length; i++) {
+                const num = numberArray[i].trim();
+                if (!isNaN(num) && num !== '') {
+                    validNumbers.push(Number(num));
+                } else {
+                    resultElement.textContent = "Please enter valid numbers only.";
+                    return;
+                }
+            }
+
+            validNumbers.sort((a, b) => order === 'asc' ? a - b : b - a);
+            resultElement.textContent = validNumbers.join(', ');
+        }
+    </script>
+</body>
+</html>
